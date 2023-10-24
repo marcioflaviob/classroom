@@ -1,0 +1,109 @@
+<html>
+    <head> 
+        <link th:href="@{/form-stylesheet.css}" rel="stylesheet"> 
+        <link th:href="@{/topnav.css}" rel="stylesheet"> 
+    </head>    
+    <body>
+        <div class="topnav" id="myTopnav">
+            <div class="dropdown">
+              <button class="dropbtnactive">Student
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a th:href="@{/student/submit/}">Submit Student</a>
+                <a th:href="@{/student/all/}">List of Students</a>
+              </div>
+            </div>
+   
+            <div class="dropdown">
+               <button class="dropbtn">Book
+                 <i class="fa fa-caret-down"></i>
+               </button>
+               <div class="dropdown-content">
+                  <a th:href="@{/book/submit/}">Submit Book</a>
+                  <a th:href="@{/book/all/}">List of Books</a>
+               </div>
+             </div>
+   
+             <div class="dropdown">
+               <button class="dropbtn">Teacher
+                 <i class="fa fa-caret-down"></i>
+               </button>
+               <div class="dropdown-content">
+                  <a th:href="@{/teacher/submit/}">Submit Teacher</a>
+                  <a th:href="@{/teacher/all/}">List of Teachers</a>
+               </div>
+             </div>
+
+             <div class="dropdown">
+                <button class="dropbtn">Lesson
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                   <a th:href="@{/lesson/submit/}">Submit Lesson</a>
+                   <a th:href="@{/lesson/all/}">List of Lessons</a>
+                </div>
+             </div>
+
+             <div class="dropdown">
+              <button class="dropbtn">Group
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                  <a th:href="@{/group/submit/}">Create Group</a>
+                  <a th:href="@{/group/all/}">List of Groups</a>
+              </div>
+           </div>
+             
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+          </div> 
+
+
+        <div class="container">    
+            <h2> Submit Student </h2>
+            <form method="post" th:object="${student}" th:action="@{/student/submit/}">
+              
+                <p style="color:red" th:errors="*{name}"> </p>
+                <input type="text" placeholder="Name" th:field="*{name}">
+
+                <p style="color:red" th:errors="*{teacher}"> </p>
+                <select class="select" th:field="*{teacher}">
+                    <option style="color:rgb(122, 122, 122)" value="">Choose Teacher</option>
+                    <option style="color:white" th:each="entry: ${teachers}" th:text="${entry.name}" th:value="${entry.id}"></option>
+                </select>
+
+                <p style="color:red" th:errors="*{book}"> </p>
+                <select class="select" th:field="*{book}">
+                    <option style="color:rgb(122, 122, 122)" value="">Choose Book</option>
+                    <option style="color:white" th:each="entry: ${books}" th:text="${entry.name}" th:value="${entry.id}"></option>
+                </select>
+
+                <input type="text" placeholder="Price" th:field="*{price}">
+
+                <p style="color:red" th:errors="*{typeOfClass}"> </p>
+                <select class="select" th:field="*{typeOfClass}">
+                    <option style="color:rgb(122, 122, 122)" value="">Choose Type of Class</option>
+                    <option style="color:white" th:each="entry: ${types}" th:text="${entry}" th:value="${entry}"></option>
+                </select>
+
+                <h4>Days of the week</h4>
+                <p style="color:red" th:errors="*{daysOfClass}"> </p>
+                <select class="select" th:field="*{daysOfClass}">
+                    <option style="color:rgb(122, 122, 122)" value="">Choose Days of Classes</option>
+                    <option style="color:white" th:each="entry: ${days}" th:text="${entry}" th:value="${entry}"></option>
+                </select>
+
+                <h4>Time of Class</h4>
+                <h4>Duration of Class</h4>
+                <p style="color:red" th:errors="*{timeOfClass}"> </p>
+                <p style="color:red" th:errors="*{durationOfClass}"> </p>
+                <input class="half" type="time" placeholder="Time of Class" th:field="*{timeOfClass}">
+                <input class="half" type="time" placeholder="Duration of Class" th:field="*{durationOfClass}">
+
+                <input type="hidden" th:field="*{id}">
+
+                <input type="submit" value="Submit Item">
+            </form>
+        </div>      
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<html>
+    <head> 
+        <link th:href="@{/form-stylesheet.css}" rel="stylesheet"> 
+        <link th:href="@{/topnav.css}" rel="stylesheet"> 
+    </head>    
+    <body>
+        <div class="topnav" id="myTopnav">
+            <div class="dropdown">
+              <button class="dropbtn">Student
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a th:href="@{/student/submit/}">Submit Student</a>
+                <a th:href="@{/student/all/}">List of Students</a>
+              </div>
+            </div>
+   
+            <div class="dropdown">
+               <button class="dropbtn">Book
+                 <i class="fa fa-caret-down"></i>
+               </button>
+               <div class="dropdown-content">
+                  <a th:href="@{/book/submit/}">Submit Book</a>
+                  <a th:href="@{/book/all/}">List of Books</a>
+               </div>
+             </div>
+   
+             <div class="dropdown">
+               <button class="dropbtn">Teacher
+                 <i class="fa fa-caret-down"></i>
+               </button>
+               <div class="dropdown-content">
+                  <a th:href="@{/teacher/submit/}">Submit Teacher</a>
+                  <a th:href="@{/teacher/all/}">List of Teachers</a>
+               </div>
+             </div>
+
+             <div class="dropdown">
+              <button class="dropbtnactive">Lesson
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                 <a th:href="@{/lesson/submit/}">Submit Lesson</a>
+                 <a th:href="@{/lesson/all/}">List of Lessons</a>
+              </div>
+           </div>
+
+           <div class="dropdown">
+            <button class="dropbtn">Group
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a th:href="@{/group/submit/}">Create Group</a>
+                <a th:href="@{/group/all/}">List of Groups</a>
+            </div>
+         </div>
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+          </div> 
+
+
+
+        <div class="container">    
+            <h2> Submit Lesson </h2>
+            <form method="post" th:object="${lesson}" th:action="@{/lesson/submitLesson}">
+              <p style="color:red" th:text="${errormessage}"> </p>
+              <h4>Choose student</h4>
+              <h4></h4>
+            <select class="select" th:field="*{student}">
+              <!-- TH:IF TO HIDE THE STUDENTS WHO ARE IN A GROUP -->
+              <option style="color:rgb(122, 122, 122)" value="">Choose Student</option>
+              <option style="color:white" th:each="entry: ${students}" th:if="${entry.sdgroup} == null" th:text="${entry.name}" th:value="${entry.id}"></option>
+            </select>
+
+            <h4>Choose group</h4>
+            <h4></h4>
+
+            <select class="select" th:field="*{sdgroup}">
+              <option style="color:rgb(122, 122, 122)" value="">Choose Group</option>
+              <option style="color:white" th:each="sdgroup: ${groups}" th:text="${sdgroup.name}" th:value="${sdgroup.id}"></option>
+          </select>
+
+                <h4>Date of Class</h4>
+                <p style="color:red" th:errors="*{date}"> </p>
+                <input type="date" style="color:black" th:field="*{date}">
+                <p style="color:red" th:errors="*{SBContent}"> </p>
+                <input type="text" placeholder="Student Book Content" th:field="*{SBContent}">
+                <input type="text" placeholder="WorkBook Content" th:field="*{WBContent}">
+                <input type="text" placeholder="Homework for next class" th:field="*{homework}">
+
+                <input type="hidden" th:field="*{id}">
+                <input type="submit" value="Submit Lesson">
+            </form>
+        </div>      
+    </body>
+</html>

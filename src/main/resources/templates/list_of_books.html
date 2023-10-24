@@ -1,0 +1,89 @@
+<html >
+<html>
+    <head> 
+        <link th:href="@{/inventory-stylesheet.css}" rel="stylesheet"> 
+        <link th:href="@{/topnav.css}" rel="stylesheet"> 
+    </head>    
+    <body>
+
+        <div class="topnav" id="myTopnav">
+            <div class="dropdown">
+              <button class="dropbtn">Student
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a th:href="@{/student/submit/}">Submit Student</a>
+                <a th:href="@{/student/all/}">List of Students</a>
+              </div>
+            </div>
+   
+            <div class="dropdown">
+               <button class="dropbtnactive">Book
+                 <i class="fa fa-caret-down"></i>
+               </button>
+               <div class="dropdown-content">
+                  <a th:href="@{/book/submit/}">Submit Book</a>
+                  <a th:href="@{/book/all/}">List of Books</a>
+               </div>
+             </div>
+   
+             <div class="dropdown">
+               <button class="dropbtn">Teacher
+                 <i class="fa fa-caret-down"></i>
+               </button>
+               <div class="dropdown-content">
+                  <a th:href="@{/teacher/submit/}">Submit Teacher</a>
+                  <a th:href="@{/teacher/all/}">List of Teachers</a>
+               </div>
+             </div>
+
+             <div class="dropdown">
+                <button class="dropbtn">Lesson
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a th:href="@{/lesson/submit/}">Submit Lesson</a>
+                    <a th:href="@{/lesson/all/}">List of Lessons</a>
+                </div>
+             </div>
+
+             <div class="dropdown">
+               <button class="dropbtn">Group
+                 <i class="fa fa-caret-down"></i>
+               </button>
+               <div class="dropdown-content">
+                   <a th:href="@{/group/submit/}">Create Group</a>
+                   <a th:href="@{/group/all/}">List of Groups</a>
+               </div>
+            </div>
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+          </div> 
+    <!--
+        <div class="alert success" th:if="${status} == 'success'">
+            <strong> You successfully submited the item! </strong> 
+        </div>
+
+        <div class="alert" th:if="${status} == 'failed'">
+            <strong > You failed to submit the item. </strong> 
+       </div>
+-->
+        <div class="container">
+           <table>
+              <tr class="head">
+                 <th>Id</th>
+                 <th>Title</th>
+                 <th> </th>
+              </tr>
+              <tr th:each="student: ${books}">
+                 <td th:text="${student.id}"></th>
+                 <td th:text="${student.name}"></td>
+                 <td>
+                    <a role="button" style="color:white; background-color: #263238" class="table-button" th:href="@{/book/submit/(id = ${student.id})}">↻</a>
+                    <a role="button" style="color:white; background-color: #860101" class="table-button" th:href="@{/book/delete/(id = ${student.id})}">X</a>
+                 </td>
+              </tr>
+           </table>
+        </div>
+   </body>
+</html>
