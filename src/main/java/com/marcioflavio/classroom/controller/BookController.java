@@ -45,13 +45,13 @@ public class BookController {
     public String handleSubmitBook(@Valid Book book, BindingResult result){
         if (result.hasErrors()) return "submit_book";
         bookService.handleSubmit(book);
-        return "redirect:/book/all";
+        return "redirect:/book/all/";
     }
 
     @GetMapping("/delete") // why not a DeleteMapping?
     public String deleteBook(@RequestParam(required = true) Long id) {
         bookService.deleteBook(id);
-        return "redirect:/book/all";
+        return "redirect:/book/all/";
     }
     
 }
