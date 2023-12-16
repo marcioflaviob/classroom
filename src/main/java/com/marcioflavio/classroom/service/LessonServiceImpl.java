@@ -1,6 +1,5 @@
 package com.marcioflavio.classroom.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
 import com.marcioflavio.classroom.entity.Lesson;
-import com.marcioflavio.classroom.entity.Student;
 import com.marcioflavio.classroom.repository.LessonRepository;
 import com.marcioflavio.classroom.repository.StudentRepository;
 

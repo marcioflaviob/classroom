@@ -93,12 +93,18 @@
                     <option style="color:white" th:each="entry: ${days}" th:text="${entry}" th:value="${entry}"></option>
                 </select>
 
-                <h4>Time of Class</h4>
-                <h4>Duration of Class</h4>
-                <p style="color:red" th:errors="*{timeOfClass}"> </p>
-                <p style="color:red" th:errors="*{durationOfClass}"> </p>
-                <input class="half" type="time" placeholder="Time of Class" th:field="*{timeOfClass}">
-                <input class="half" type="time" placeholder="Duration of Class" th:field="*{durationOfClass}">
+                <div class="time-selector">
+                  <div>
+                    <h4>Time of Class</h4>
+                    <p style="color:red" th:errors="*{timeOfClass}"> </p>
+                    <input class="half" type="time" placeholder="Time of Class" th:field="*{timeOfClass}">
+                  </div>
+                  <div>
+                    <h4>Duration of Class</h4>
+                    <p style="color:red" th:errors="*{durationOfClass}"> </p>
+                    <input class="half" type="time" placeholder="Duration of Class" th:field="*{durationOfClass}">
+                  </div>
+                </div>
 
                 <input type="hidden" th:field="*{id}">
 
