@@ -19,10 +19,10 @@ public class LessonParticipation { // This entity is a workaround to keep a hist
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Lesson lesson;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Student student;
     
 }

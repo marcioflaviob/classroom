@@ -2,6 +2,7 @@ package com.marcioflavio.classroom.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,9 +29,9 @@ public class SDGroup {
     private String name;
     private String typeOfGroup;
 
-    @OneToMany(mappedBy = "sdgroup")
+    @OneToMany(mappedBy = "sdgroup", cascade=CascadeType.ALL)
     private List<Student> students;
 
-    @OneToMany(mappedBy = "sdgroup")
+    @OneToMany(mappedBy = "sdgroup", cascade=CascadeType.ALL)
     private List<Lesson> lessons;
 }

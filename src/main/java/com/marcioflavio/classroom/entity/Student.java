@@ -3,6 +3,7 @@ package com.marcioflavio.classroom.entity;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -56,7 +57,7 @@ public class Student {
     @JsonIgnore
     private SDGroup sdgroup;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Lesson> lessons;
     

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,10 +35,10 @@ public class Lesson {
     private String WBContent;
     private String homework;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Student student;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private SDGroup sdgroup;
 
     private boolean isGroup = false;
