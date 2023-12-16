@@ -57,7 +57,7 @@ public class Student {
     @JsonIgnore
     private SDGroup sdgroup;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student")
     @JsonIgnore
     private List<Lesson> lessons;
     

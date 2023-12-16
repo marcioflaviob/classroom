@@ -22,7 +22,7 @@ public class LessonParticipation { // This entity is a workaround to keep a hist
     @ManyToOne(cascade = CascadeType.ALL)
     private Lesson lesson;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Student student;
     
 }

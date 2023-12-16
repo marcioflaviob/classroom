@@ -29,9 +29,9 @@ public class SDGroup {
     private String name;
     private String typeOfGroup;
 
-    @OneToMany(mappedBy = "sdgroup", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "sdgroup")
     private List<Student> students;
 
-    @OneToMany(mappedBy = "sdgroup", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "sdgroup")
     private List<Lesson> lessons;
 }

@@ -35,10 +35,10 @@ public class Lesson {
     private String WBContent;
     private String homework;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     private Student student;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     private SDGroup sdgroup;
 
     private boolean isGroup = false;

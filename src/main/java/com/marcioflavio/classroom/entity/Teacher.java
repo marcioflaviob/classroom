@@ -35,7 +35,7 @@ public class Teacher {
     @NotBlank(message = "Name cannot be blank")
     private String name;
 
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "teacher")
     @JsonIgnore
     private List<Student> students;
     
